@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <title>Rocket Upload</title>
+</head>
+
+<body>
+
+    <div id="content">
+
+        <form method="post" enctype="multipart/form-data">
+
+            <div id="upload-box">
+
+                <input id="upload-file" type="file" name="file" accept="image/png, image/jpeg, .pdf, .rm">
+
+                <label for="upload-file" class="box-label">
+                    <i id="upload-icon" class="ph-thin ph-cloud-arrow-up"></i>
+                    <strong> Importe seus arquivos</strong>
+                    <span>Arraste ou clique para fazer upload</span>
+                </label>
+
+                <button class="upload-button" type="submit">Enviar</button>
+            </div>
+
+
+            <div id="file-box">
+
+                <div class="status file-uploading">
+                    <div class="file-icon"><i class="ph-fill ph-file"></i></div>
+
+                    <div class="file-status">
+                        <strong class="file-title">Scann_158.pdf</strong>
+
+                        <div class="file-size"><span>30 mb</span> / <span>70 mb</span></div>
+
+                        <div class="progress-bar">
+                            <div class="bar uploding"><div></div></div>
+                            <span class="progress uploding">46%</span>
+                        </div>
+                    </div>
+
+                    <span class="cancel icon"><i class="ph-thin ph-x"></i></span>
+
+                </div>
+
+
+                <div class="status file-success">
+                    <div class="file-icon"><i class="ph-fill ph-file"></i></div>
+
+                    <div class="file-status">
+                        <strong class="file-title">README.rm</strong>
+
+                        <div class="file-size"><span>12 kb</span></div>
+
+                        <div class="progress-bar">
+                            <div class="bar sucess"><div></div></div>
+                            <span class="progress sucess">100%</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="status file-error">
+                    <div class="file-icon"><i class="ph-fill ph-file"></i></div>
+
+                    <div class="file-status">
+                        <strong class="file-title">picture1.jpeg</strong>
+
+                        <div class="file-size"><span>6.3 mb</span></div>
+
+                        <div class="progress-bar">
+                            <div class="bar error"><div></div></div>
+                            <span class="progress error">erro</span>
+                        </div>
+                    </div>
+
+                    <span class="retry icon"><i class="ph-thin ph-arrow-counter-clockwise"></i></span>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+<script type="module" src="src/main.js" defer></script>
+
+</html>
