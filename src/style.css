@@ -174,7 +174,7 @@ body {
     overflow: hidden;
 }
 .file-status .progress-bar .bar.uploding > div {
-    width: 56%;
+    width: 0;
     height: 100%;
     background: linear-gradient(90deg, rgba(58, 97, 237, 0.52) 0%, #7C3AED 100%);
 }
