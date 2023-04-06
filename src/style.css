@@ -144,7 +144,7 @@ body {
     gap: .2rem;
 }
 
-.file-status .file-title {
+.file-status .file-name {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
