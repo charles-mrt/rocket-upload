@@ -123,35 +123,35 @@ body {
     font-size: 3rem;
 }
 
-.status.file-uploading .file-icon {
+.uploading .file-icon {
     color: var(--file-uploading);
     background: var(--bg-uploading);
 }
 
-.status.file-success .file-icon {
+.success .file-icon {
     color: var(--file-upload-sucess);
     background: var(--bg-upload-sucess);
 }
 
-.status.file-error .file-icon {
+.error .file-icon {
     color: var(--file-upload-error);
     background: var(--bg-upload-error);
 }
 
-.file-status {
+.file {
     display: flex;
     flex-direction: column;
     gap: .2rem;
 }
 
-.file-status .file-name {
+.file .name {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.4rem;
     color: var(--file-name);    
 }
-.file-status .file-size {
+.file .size {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -160,36 +160,32 @@ body {
     color: var(--file-size);    
 }
 
-.file-status .progress-bar {
+.file .progress-bar {
     display: flex;
     align-items: center;
     gap: .8rem;
 }
 
-.file-status .progress-bar .bar {
+.file .progress-bar .bar-size {
     width: 33rem;
     height: 1rem;
     border-radius: 999px;
     background: #E3E3ED;
     overflow: hidden;
 }
-.file-status .progress-bar .bar.uploding > div {
-    width: 0;
+.uploading .file .progress-bar .bar-size .progress {
+    width: 30%;
     height: 100%;
     background: linear-gradient(90deg, rgba(58, 97, 237, 0.52) 0%, #7C3AED 100%);
 }
-.file-status .progress-bar .bar.sucess > div {
+.success .file .progress-bar .bar-size .progress {
     width: 100%;
     height: 100%;
     background: var(--file-upload-sucess);
 }
-.file-status .progress-bar .bar.error > div {
-    width: 0%;
-    height: 100%;
-    background: #E3E3ED;
-}
 
-.file-status .progress-bar .progress {
+
+.file .progress-bar .percent {
     width: 3rem;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -198,13 +194,13 @@ body {
     text-transform: capitalize;
 }
 
-.file-status .progress-bar .progress.uploding {
+.uploading .file .progress-bar .percent {
     color: #9892A6;
 }
-.file-status .progress-bar .progress.sucess {
+.success .file .progress-bar .percent {
     color: var(--file-upload-sucess);
 }
-.file-status .progress-bar .progress.error {
+.error .file .progress-bar .percent {
     color: var(--file-upload-error);
 }
 
@@ -217,10 +213,6 @@ body {
     top: .5rem;
     right: .5rem;
     font-size: 2rem;
-}
-#file-box .status .cancel.icon {
     color: #794FED;
 }
-#file-box .status .retry.icon {
-    color: var(--file-upload-error);
-}
+

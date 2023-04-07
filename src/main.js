@@ -23,7 +23,7 @@ const handleWithFileProperties = () => {
             xhr.open('POST', '/upload', true);
 
             xhr.upload.onprogress = (event) => {
-            
+
                 // Atualiza o valor da barra de progresso com o percentual de carregamento
                 const loaded = event.loaded;
                 const percent = Math.round((loaded / max) * 100);
@@ -31,6 +31,16 @@ const handleWithFileProperties = () => {
                 renderFileUpLoadStatus(file.name, loaded, fileSize, percent, percent);
             };
             xhr.send(formData);
+
+            const AbortUpload = () => {
+                const AbortIcon = document.querySelector(".icon");
+                AbortIcon.addEventListener("click", () => {
+                    console.log("testessss")
+                });
+                console.log("teste")
+            }
+           // setTimeout(AbortUpload, 500);
+
 
         }
 
@@ -42,31 +52,24 @@ handleWithFileProperties();
 
 
 
+
+
+
 const renderFileUpLoadStatus = (fileName, fileLoaded, fileSize, percentLoaded, progressBar) => {
 
-    let status = "file-uploading";
-    let barStatus = "uploding";
-    let progressLoaded = "uploding";   
+    let status = "uploading";
     let iconName = "ph-thin ph-x";
-    let iconStatus = "cancel";
-
+    
     if (percentLoaded === 100) {
-        status = "file-success";
-        barStatus = "sucess";
-        progressLoaded = "sucess";   
-        iconStatus ="";
-        iconName = "";        
+        status = "success";
+        iconName = "";
     }
 
     if (percentLoaded === "error") {
-        status = "file-error";
-        barStatus = "error";
-        progressLoaded = "error";
-        iconStatus = "retry";
+        status = "error";
         iconName = "ph-thin ph-arrow-counter-clockwise";
     }
 
-    const fileStatusBox = document.querySelector("#file-box");
 
     const renderStatusBox = `
         
@@ -74,23 +77,23 @@ const renderFileUpLoadStatus = (fileName, fileLoaded, fileSize, percentLoaded, p
             <i class="ph-fill ph-file"></i>
         </div>
 
-        <div class="file-status">
-            <strong class="file-name">
+        <div class="file">
+            <strong class="name">
                 ${fileName}
             </strong>
 
-            <div class="file-size">
-                <span>${fileLoaded}</span> / 
-                <span>${fileSize}</span>
+            <div class="size">
+                <span>${fileLoaded} kb</span> / 
+                <span>${fileSize} kb</span>
             </div>
 
             <div class="progress-bar">
 
-                <div class="bar ${barStatus}">
-                    <div style="width:${progressBar}%"></div>
+                <div class="bar-size">
+                    <div class="progress" style="width:${progressBar}%"></div>
                 </div>
 
-                <span class="progress ${progressLoaded}">
+                <span class="percent">
                     ${percentLoaded}%
                 </span>
 
@@ -98,11 +101,14 @@ const renderFileUpLoadStatus = (fileName, fileLoaded, fileSize, percentLoaded, p
 
         </div>
 
-        <span class="${iconStatus} icon">
+        <span class="icon">
             <i class="${iconName}"></i>
         </span>
         
     `;
+
+    const fileStatusBox = document.querySelector("#file-box");
+
     return fileStatusBox.innerHTML = `<div class="status ${status}">${renderStatusBox}</div>`;
 }
 
