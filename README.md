@@ -15,7 +15,8 @@
   <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
 </p>
 <p align="center">
-   <a href="https://charles-mrt.github.io/rocket-upload/">TO ACCESS THIS APP <br> CLICK HERE</a>
+   <a href="https://charles-mrt.github.io/rocket-upload/">TO ACCESS THIS APP <br> CLICK HERE</a><br>
+   Due to github pages not supporting upload it will not be possible to interact with all app features. For that, clone the repository to a local project.
 </p>
 <br>
 <p align="center">
