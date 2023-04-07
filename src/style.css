@@ -103,8 +103,10 @@ body {
     height: 7.2rem;
     padding: .8rem;
     border-radius: .8rem;
-    background: #FFFFFF;
     margin: 2rem 0;
+    background: #FFFFFF;
+    box-shadow: 1px 2px 5px 0px #bebebe;
+    
 
     /* display flex is controlled by JS*/
     display: none;
