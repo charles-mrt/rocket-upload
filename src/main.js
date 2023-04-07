@@ -57,6 +57,7 @@ const handleWithFileProperties = (isAborted) => {
 
             const fileSize = Math.round((file.size / 1024));
 
+            fileStatus.style.display = "flex";
             showFileName(file.name)
             showfileSize(fileSize);
 
