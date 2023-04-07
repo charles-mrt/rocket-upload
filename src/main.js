@@ -112,7 +112,7 @@ loadFileSelected - Loads the selected file and starts the upload process
         formData.append('file', file);
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/upload.html', true);
+        xhr.open('POST', '/', true);
 
         xhr.upload.onprogress = (event) => {
 
