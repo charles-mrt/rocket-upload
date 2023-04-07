@@ -1,116 +1,126 @@
 
 
 const inputFile = document.querySelector("#upload-file");
+const fileStatus = document.querySelector("#file-box .status");
 
-const handleWithFileProperties = () => {
+const fileName = document.querySelector(".file .name");
+const fileSize = document.querySelector(".file .size span:last-child");
+const fileSizeLoaded = document.querySelector(".file .size span:first-child");
+
+const progressBar = document.querySelector(".progress");
+const progressInPercent = document.querySelector(".percent");
+
+const buttonIcon = document.querySelector(".icon i");
+
+
+
+const showFileName = (name) => {
+    fileName.textContent = name;
+}
+const showfileSize = (size) => {
+    fileSize.textContent = `${size} kb`
+}
+const showfileSizeLoaded = (progress) => {
+    fileSizeLoaded.textContent = `${progress} kb / `;
+}
+const showProgressBar = (progress) => {
+    progressBar.style.width = `${progress}%`;
+}
+const showProgressInPercent = (progress) => {
+    progressInPercent.textContent = `${progress}%`;
+}
+
+const handleWithFileStatus = (status) => {
+
+    if (status === "sucess") {
+        fileStatus.classList.remove("loading");
+        fileStatus.classList.add("success");
+        buttonIcon.classList.remove("ph-x");
+    }
+
+    if (status === "error") {
+        fileStatus.classList.remove("loading");
+        fileStatus.classList.add("error");
+        buttonIcon.classList.remove("ph-x");
+        buttonIcon.classList.add("ph-arrow-counter-clockwise");
+    }
+}
+
+
+const handleWithFileProperties = (isAborted) => {
 
     inputFile.addEventListener("change", () => {
 
         if (inputFile.files.length > 0) {
 
             const file = inputFile.files[0];
+
             const fileSize = Math.round((file.size / 1024));
 
-            // Configura a barra de progresso com o tamanho do arquivo
-            const max = file.size;
+            showFileName(file.name)
+            showfileSize(fileSize);
 
-            // Cria uma instância de FormData e adiciona o arquivo
             const formData = new FormData();
             formData.append('file', file);
 
-            // Cria uma instância de XMLHttpRequest e envia o arquivo
             const xhr = new XMLHttpRequest();
             xhr.open('POST', '/upload', true);
 
             xhr.upload.onprogress = (event) => {
 
-                // Atualiza o valor da barra de progresso com o percentual de carregamento
                 const loaded = event.loaded;
-                const percent = Math.round((loaded / max) * 100);
+                const percent = Math.round((loaded / file.size) * 100);
 
-                renderFileUpLoadStatus(file.name, loaded, fileSize, percent, percent);
+                showfileSizeLoaded(loaded);
+                showProgressBar(percent)
+                showProgressInPercent(percent);
+
+
             };
             xhr.send(formData);
+        
+            buttonIcon.addEventListener("click", (e) => {
+                e.preventDefault();
 
-            const AbortUpload = () => {
-                const AbortIcon = document.querySelector(".icon");
-                AbortIcon.addEventListener("click", () => {
-                    console.log("testessss")
-                });
-                console.log("teste")
+                if (!isAborted) {
+                    if (xhr.readyState !== xhr.DONE) {
+                        isAborted = true;
+                        xhr.abort();
+                        handleWithFileStatus("error");
+                        console.log(xhr.responseText);
+                    }
+                }  
+                else {
+                    const uploadForm = document.querySelector("#uploadForm");                    
+                    isAborted = false;        
+                    uploadForm.reset();
+                    location.reload();
+                }
+            });
+
+            xhr.onreadystatechange = () => {
+
+                try {
+
+                    if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                        handleWithFileStatus("sucess");
+                        console.log("sucess status " + xhr.status);
+                    }
+
+                } catch (err) {
+                    handleWithFileStatus("error");
+                    xhr.abort();
+                    console.log("Erro " + xhr.status + ": " + xhr.statusText);
+                }
+
             }
-           // setTimeout(AbortUpload, 500);
-
-
         }
-
     });
 
 }
-
 handleWithFileProperties();
 
 
-
-
-
-
-const renderFileUpLoadStatus = (fileName, fileLoaded, fileSize, percentLoaded, progressBar) => {
-
-    let status = "uploading";
-    let iconName = "ph-thin ph-x";
-    
-    if (percentLoaded === 100) {
-        status = "success";
-        iconName = "";
-    }
-
-    if (percentLoaded === "error") {
-        status = "error";
-        iconName = "ph-thin ph-arrow-counter-clockwise";
-    }
-
-
-    const renderStatusBox = `
-        
-        <div class="file-icon">
-            <i class="ph-fill ph-file"></i>
-        </div>
-
-        <div class="file">
-            <strong class="name">
-                ${fileName}
-            </strong>
-
-            <div class="size">
-                <span>${fileLoaded} kb</span> / 
-                <span>${fileSize} kb</span>
-            </div>
-
-            <div class="progress-bar">
-
-                <div class="bar-size">
-                    <div class="progress" style="width:${progressBar}%"></div>
-                </div>
-
-                <span class="percent">
-                    ${percentLoaded}%
-                </span>
-
-            </div>
-
-        </div>
-
-        <span class="icon">
-            <i class="${iconName}"></i>
-        </span>
-        
-    `;
-
-    const fileStatusBox = document.querySelector("#file-box");
-
-    return fileStatusBox.innerHTML = `<div class="status ${status}">${renderStatusBox}</div>`;
-}
 
 
 
