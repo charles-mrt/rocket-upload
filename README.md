@@ -19,7 +19,7 @@
 </p>
 <br>
 <p align="center">
-  <img alt="rocket-upload" src=".github/preview.jpg" width="70%">
+  <img alt="rocket-upload" src=".github/preview.gif" width="70%">
 </p>
 
 ## 🚀 Technologies
