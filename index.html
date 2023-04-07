@@ -20,7 +20,7 @@
 
     <div id="content">
 
-        <form method="post" enctype="multipart/form-data">
+        <form id="uploadForm" method="post" enctype="multipart/form-data">
 
             <div id="upload-box">
 
@@ -35,63 +35,30 @@
                 <button class="upload-button" type="submit">Enviar</button>
             </div>
 
+           <div id="file-box">
 
-            <div id="file-box">
-
-                <div class="status file-uploading">
+                  <div class="status uploading">
                     <div class="file-icon"><i class="ph-fill ph-file"></i></div>
 
-                    <div class="file-status">
-                        <strong class="file-name">Scann_158.pdf</strong>
+                    <div class="file">
+                        <strong class="name"></strong>
 
-                        <div class="file-size"><span>30 mb</span> / <span>70 mb</span></div>
+                        <div class="size"><span></span><span></span></div>
 
                         <div class="progress-bar">
-                            <div class="bar uploding"><div></div></div>
-                            <span class="progress uploding">46%</span>
+                            <div class="bar-size">
+                                <div class="progress"></div>
+                            </div>
+                            <span class="percent"></span>
                         </div>
                     </div>
 
-                    <span class="cancel icon"><i class="ph-thin ph-x"></i></span>
+                    <button class="icon">
+                        <i class="ph-bold ph-x"></i>
+                    </button>
 
                 </div>
-
-
-                <div class="status file-success">
-                    <div class="file-icon"><i class="ph-fill ph-file"></i></div>
-
-                    <div class="file-status">
-                        <strong class="file-name">README.rm</strong>
-
-                        <div class="file-size"><span>12 kb</span></div>
-
-                        <div class="progress-bar">
-                            <div class="bar sucess"><div></div></div>
-                            <span class="progress sucess">100%</span>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="status file-error">
-                    <div class="file-icon"><i class="ph-fill ph-file"></i></div>
-
-                    <div class="file-status">
-                        <strong class="file-name">picture1.jpeg</strong>
-
-                        <div class="file-size"><span>6.3 mb</span></div>
-
-                        <div class="progress-bar">
-                            <div class="bar error"><div></div></div>
-                            <span class="progress error">erro</span>
-                        </div>
-                    </div>
-
-                    <span class="retry icon"><i class="ph-thin ph-arrow-counter-clockwise"></i></span>
-
-                </div>
-            </div>
+            </div> 
 
         </form>
     </div>
