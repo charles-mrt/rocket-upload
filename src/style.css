@@ -174,7 +174,7 @@ body {
     overflow: hidden;
 }
 .uploading .file .progress-bar .bar-size .progress {
-    width: 30%;
+    width: 0%;
     height: 100%;
     background: linear-gradient(90deg, rgba(58, 97, 237, 0.52) 0%, #7C3AED 100%);
 }
@@ -208,11 +208,15 @@ body {
 /*
  * close and retry icons
 */
-#file-box .status .icon {
+#file-box .status button.icon{
     position: absolute;
     top: .5rem;
     right: .5rem;
     font-size: 2rem;
     color: #794FED;
+    background: transparent;
+    transition: .3s;
 }
-
+#file-box .status button.icon:hover {
+    color: #a085eb;
+}
