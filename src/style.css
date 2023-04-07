@@ -5,8 +5,6 @@
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    font-family: 'Inter', sans-serif;
 }
 
 :root {
@@ -21,6 +19,8 @@
 
     --file-name: #575361;
     --file-size: #857E95;
+
+    --purple-700: #7C3AED;
 
     /* 1rem = 10px*/
     font-size: 62%;
@@ -55,6 +55,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    box-shadow: none;
+}
+
+#content form #upload-box.dropFile {
+    transition: .3s;
+    border-color: var(--purple-700);
+    background: #FFFFFF;
+    box-shadow: 0 0 7px 0px #C1B2FA;
 }
 
 #upload-box .box-label {
@@ -68,7 +77,7 @@ body {
 
 #upload-box #upload-icon {
     font-size: 6rem;
-    color: #7C3AED;
+    color: var(--purple-700);
     margin-bottom: 1.2rem;
 }
 
@@ -97,16 +106,14 @@ body {
 }
 
 #file-box .status {
-    
-
     width: 100%;
     height: 7.2rem;
     padding: .8rem;
     border-radius: .8rem;
     margin: 2rem 0;
     background: #FFFFFF;
-    box-shadow: 1px 2px 5px 0px #bebebe;
-    
+    box-shadow: 1px 2px 5px 0px #BEBEBE;
+
 
     /* display flex is controlled by JS*/
     display: none;
@@ -155,15 +162,16 @@ body {
     font-style: normal;
     font-weight: 700;
     font-size: 1.4rem;
-    color: var(--file-name);    
+    color: var(--file-name);
 }
+
 .file .size {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.2rem;
     text-transform: uppercase;
-    color: var(--file-size);    
+    color: var(--file-size);
 }
 
 .file .progress-bar {
@@ -179,11 +187,13 @@ body {
     background: #E3E3ED;
     overflow: hidden;
 }
+
 .uploading .file .progress-bar .bar-size .progress {
     width: 0%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(58, 97, 237, 0.52) 0%, #7C3AED 100%);
+    background: linear-gradient(90deg, rgba(58, 97, 237, 0.52) 0%, var(--purple-700) 100%);
 }
+
 .success .file .progress-bar .bar-size .progress {
     width: 100%;
     height: 100%;
@@ -203,9 +213,11 @@ body {
 .uploading .file .progress-bar .percent {
     color: #9892A6;
 }
+
 .success .file .progress-bar .percent {
     color: var(--file-upload-sucess);
 }
+
 .error .file .progress-bar .percent {
     color: var(--file-upload-error);
 }
@@ -214,7 +226,7 @@ body {
 /*
  * close and retry icons
 */
-#file-box .status button.icon{
+#file-box .status button.icon {
     position: absolute;
     top: .5rem;
     right: .5rem;
@@ -223,6 +235,7 @@ body {
     background: transparent;
     transition: .3s;
 }
+
 #file-box .status button.icon:hover {
-    color: #a085eb;
+    color: #A085EB;
 }
